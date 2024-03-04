@@ -1,0 +1,10 @@
+query GetAllProducts {
+  products {
+    id
+    name
+    createdAt
+    sizePerUnit
+    type
+    exported
+  }
+}

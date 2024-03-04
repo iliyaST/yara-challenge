@@ -1,0 +1,19 @@
+mutation CreateProduct($type: String!, $sizePerUnit: Float!, $name: String!) {
+  createProduct(type: $type, sizePerUnit: $sizePerUnit, name: $name) {
+    id
+  }
+}
+
+mutation UpdateProductExportStatus(
+  $warehouseId: Float!
+  $exported: Boolean!
+  $productId: Float!
+) {
+  updateProductExportStatus(
+    warehouseId: $warehouseId
+    exported: $exported
+    productId: $productId
+  ) {
+    id
+  }
+}

@@ -1,0 +1,9 @@
+query GetAllWarehouses {
+  warehouses {
+    id
+    name
+    createdAt
+    productTypes
+    size
+  }
+}

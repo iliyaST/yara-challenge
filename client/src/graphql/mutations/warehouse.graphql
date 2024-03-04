@@ -1,0 +1,19 @@
+mutation CreateWarehouse($size: Float!, $name: String!) {
+  createWarehouse(size: $size, name: $name) {
+    id
+  }
+}
+
+mutation updateWarehouse(
+  $size: Float!
+  $productTypes: String!
+  $warehouseId: Float!
+) {
+  updateWarehouse(
+    size: $size
+    productTypes: $productTypes
+    warehouseId: $warehouseId
+  ) {
+    id
+  }
+}

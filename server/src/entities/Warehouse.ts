@@ -4,18 +4,17 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  JoinColumn,
-  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { Warehouse } from "./Warehouse";
+import { Product } from "./Product";
 
 export type ProductType = "hazardous" | "non-hazardous";
 
 @ObjectType()
 @Entity()
-export class Product extends BaseEntity {
+export class Warehouse extends BaseEntity {
   @Field()
   @PrimaryGeneratedColumn()
   id!: number;
@@ -29,26 +28,17 @@ export class Product extends BaseEntity {
   updatedAt?: Date;
 
   @Field()
-  @Column({ unique: true, type: "text" })
+  @Column()
   name!: string;
-
-  @Field()
-  @Column()
-  type!: ProductType;
-
-  @Field()
-  @Column()
-  sizePerUnit!: number;
-
-  @Field()
-  @Column()
-  exported!: boolean;
 
   @Field({ nullable: true })
   @Column({ nullable: true })
-  warehouseId?: number;
+  productTypes?: ProductType;
 
-  @ManyToOne(() => Warehouse, (warehouse) => warehouse.products)
-  @JoinColumn({ name: "warehouseId" })
-  warehouse: Warehouse;
+  @Field()
+  @Column()
+  size!: number;
+
+  @OneToMany(() => Product, (product) => product.warehouse)
+  products: Product[];
 }
